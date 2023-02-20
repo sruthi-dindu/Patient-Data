@@ -18,3 +18,8 @@ Files
 ./api.py – In this file the rest endpoints are created and each end points are mapped to their functions.
 ./testing.py – In this file the script for testing the created application is written
 
+
+The flow of the application is as follows,
+
+
+![basic patient table](https://user-images.githubusercontent.com/43267530/220086460-78fd921f-62a7-4716-9d12-6c14ddec305c.png)
