@@ -4,6 +4,7 @@
 #import the required packages
 import requests
 import json
+import random
 
 #import everything from patient and api module
 from patient import *
@@ -41,7 +42,45 @@ def delReq(url):
     except Exception as er:
         return f"Message : {er}"
     
-    
+
+names = ['Liam', 'Noah', 'Oliver', 'Olivia', 'Emma', 'Sophia', 'Henry', 'Mia', 'Lucas', 'William']
+diagnosis =['Atopic Dermitis', 'Plague Psoriasis', 'Crohn\'s Diseasis', 'Psoriatic Arthritis', 'neurodermitis']
+
+#Get all the Patient Deatails
+url_inp = "http://127.0.0.1:1234/patient"
+print(getReq(url_inp))
+
+#Add 10 Patient details
+for i in range(10):
+    url_inp = "http://127.0.0.1:1234/patient/post"
+    name = random.choice(names)
+    dia = random.choice(diagnosis)
+    age = random.randint(15,89)
+    data_inp = { "name" : name, "age" : age, "diagnosis" : dia}
+    print(postReq(url_inp, data_inp))
+
+#updating a patient
+ID = random.randint(0,20)
+url_inp = "http://127.0.0.1:1234/patient/update/"+ str(ID)
+name = random.choice(names)
+dia = random.choice(diagnosis)
+age = random.randint(15,89)
+data_inp = { "name" : name, "age" : age, "diagnosis" : dia}
+print(putReq(url_inp, data_inp))
+
+#Deleting a Patient
+ID = random.randint(0,10)
+url_inp = "http://127.0.0.1:1234/patient/delete/"+ str(ID)                
+print(delReq(url_inp) + ' Patient with ID ' + str(ID))
+
+
+
+
+
+
+
+"""
+
 if __name__ == '__main__':
     while True:
         try:
@@ -71,6 +110,6 @@ if __name__ == '__main__':
             elif choice == 5:
                 exit(0)
         except Exception as e:
-            print("Error : ", e)
+            print("Error : ", e)"""
 
 			
